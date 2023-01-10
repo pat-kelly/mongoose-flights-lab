@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
-import { Movie } from '../models/movie.js';
+import { Flight } from '../models/flight.js';
 
 function index(req, res){
-  Movie.find({})
-  .then(movies =>{
-    res.render('movies/index',{
-      movies: movies,
-      title: 'All Movies'
+  Flight.find({})
+  .then(flights =>{
+    res.render('flights/index',{
+      flights: flights,
+      title: 'All Flights'
     })
   })
   .catch(err =>{
@@ -15,13 +15,13 @@ function index(req, res){
   })
 }
 
-function newMovie(req, res){
-  res.render('movies/new',{
-    title: 'Add Movie'
+function newFlight(req, res){
+  res.render('flights/new',{
+    title: 'Add Flight'
   })
 }
 
-function create(req, res){
+/* function create(req, res){
   //turn nowShowing into a bool - if it's there, it'll be false, otherwise, true.
   req.body.nowShowing = !!req.body.nowShowing;
   //split the string into an array for the cast.
@@ -41,10 +41,10 @@ function create(req, res){
     res.redirect('/movies');
   })
 
-}
+} */
 
 export{
   index,
-  newMovie as new,
-  create
+  newFlight as new,
+  // create
 }
