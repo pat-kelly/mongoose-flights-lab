@@ -15,14 +15,14 @@
       <select name="airport" id="airport-select">
         <option value="AUS">AUS</option>
         <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
+        <option value="DEN" selected>DEN</option>
         <option value="LAX">LAX</option>
         <option value="SAN">SAN</option>
       </select>
     <label for="flightNo-input">Flight Number (10-9999):</label>
       <input required type="text" name="flightNo" id="flightNo-input">
     <label for="departs-input">Departure Date/Time:</label>
-      <input required type="datetime-local" name="departs" id="departs-input">
+      <input type="datetime-local" name="departs" id="departs-input">
       <button type="submit">Add Flight</button>
   </form>
 </main>

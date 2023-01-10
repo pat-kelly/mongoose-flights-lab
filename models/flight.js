@@ -19,7 +19,9 @@ const movieSchema = new Schema({
   departs: {
     type: Date,
     default: function(){
-      return new Date();
+      let curDate = new Date();
+      curDate.setFullYear(curDate.getFullYear()+1);
+      return curDate;
     }
   }
 
