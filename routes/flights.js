@@ -11,7 +11,7 @@ router.get('/', flightsCtrl.index);
 router.get('/new', flightsCtrl.new);
 
 // POST /flights
-// router.post('/', flightsCtrl.create);
+router.post('/', flightsCtrl.create);
 
 export {
   router

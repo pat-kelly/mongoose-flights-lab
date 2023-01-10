@@ -19,12 +19,12 @@
       <%# Write the line of EJS to iterate over movies using forEach %>
       <% flights .forEach(flight => { %>
         <tr>
-          <!-- <td><%= movie.title %></td>
+          <td><%= movie.title %></td>
           <td><%= movie.releaseYear %></td>
           <td><%= movie.mpaaRating %></td>
           <td><%= movie.cast.join(', ') %></td>
           <%# finish the ternary expression to display 'Yes' or 'Nope' %> 
-          <td><%= movie.nowShowing ?  'Yes!' : 'Nope'%></td> -->
+          <td><%= movie.nowShowing ?  'Yes!' : 'Nope'%></td>
         </tr>
       <% }) %>
       <%# Close the forEach using EJS here %>
