@@ -38,8 +38,13 @@ function create(req, res){
   })
 }
 
+function delFlight(req, res){
+  console.log(req.params.id, 'in delete');
+}
+
 export{
   index,
   newFlight as new,
-  create
+  create,
+  delFlight as delete
 }

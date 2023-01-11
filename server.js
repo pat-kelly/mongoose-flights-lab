@@ -1,9 +1,10 @@
 import "dotenv/config.js";
-import createError from 'http-errors'
-import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import logger from 'morgan'
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import logger from 'morgan';
+import methodOverride from "method-override" ;
 
 //connect to DB
 import('./config/database.js');
@@ -31,6 +32,7 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(methodOverride("_method"));
 
 // mounted routers
 app.use('/', indexRouter)
