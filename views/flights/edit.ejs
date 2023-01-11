@@ -4,7 +4,7 @@
 
 <main>
   <h1><%= title %></h1>
-  <form 
+  <form
     id='edit-form'
     action="/flights/<%= flight._id %>?_method=PUT"
     method="POST"
@@ -13,7 +13,7 @@
       <select name="airline" id="airline-select">
         <option <%= flight.airline === 'American' ? 'Selected' : '' %> value="American">American</option>
         <option <%= flight.airline === 'Southwest' ? 'Selected' : '' %> value="Southwest">Southwest</option>
-        <option <%= flight.airline === 'United' ? 'Selected' : '' %>  value="United">United</option>        
+        <option <%= flight.airline === 'United' ? 'Selected' : '' %>  value="United">United</option>
       </select>
     <label for="airport-select">Airport:</label>
       <select name="airport" id="airport-select">
