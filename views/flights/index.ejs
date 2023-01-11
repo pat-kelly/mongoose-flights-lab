@@ -17,8 +17,8 @@
     <tbody>
       <% flights .forEach(flight => { %>
         <%# flight.departs.getTime() %> 
-        <%# Date.now() %> 
-        <tr <%= flight.departs.getTime() < Date.now() ? 'class=red' : '' %>>
+        <%# new Date().getTime() %> 
+        <tr <%= flight.departs.getTime() < new Date().getTime() ? 'class=red' : '' %>>
           <td>
             <form 
               action="/flights/<%= flight._id %>?_method=DELETE"
@@ -31,7 +31,7 @@
           <td><%= flight.flightNo %> </td>
           <td><%= flight.airline %></td>
           <td><%= flight.airport %></td>
-          <td><%= flight.departs.toLocaleDateString() %>  <%= flight.departs.toLocaleTimeString() %> </td>
+          <td><%= flight.departs.toLocaleDateString() %>  <%= flight.departs.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) %> </td>
         </tr>
       <% }) %>
     </tbody>

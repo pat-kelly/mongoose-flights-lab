@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const movieSchema = new Schema({
+const flightSchema = new Schema({
   airline: {
     type: String,
     enum: ['American', 'Southwest', 'United']
@@ -20,15 +20,13 @@ const movieSchema = new Schema({
     type: Date,
     default: function(){
       let curDate = new Date();
-      curDate.setFullYear(curDate.getFullYear()+1);
-      curDate.setHours(curDate.getHours()-5);
       return curDate;
     }
   }
 
 }, {timestamps: true})
 
-const Flight = mongoose.model('Flight', movieSchema);
+const Flight = mongoose.model('Flight', flightSchema);
 
 export{
   Flight

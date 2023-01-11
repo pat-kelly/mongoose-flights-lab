@@ -23,7 +23,8 @@ function newFlight(req, res){
 }
 
 function create(req, res){
-  console.log(req.body);
+  // console.log(req.body);
+  // console.log('REQ PARAMS', req.params)
   //remove empties so defaults can take over
   for(let key in req.body){
     if(req.body[key] === '') delete req.body[key];
