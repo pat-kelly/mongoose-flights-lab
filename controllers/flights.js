@@ -22,7 +22,7 @@ function newFlight(req, res){
 }
 
 function create(req, res){
-  console.log(req.body);
+  // console.log(req.body);
   //remove empties so defaults can take over
   for(let key in req.body){
     if(req.body[key] === '') delete req.body[key];
@@ -63,10 +63,14 @@ function show(req, res){
     console.error(err);
     res.redirect('/flights');
   })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
 }
 
 function edit(req, res){
-  console.log(req.params.id, 'in edit');
+  // console.log(req.params.id, 'in edit');
   Flight.findById(req.params.id)
   .then(flight =>{
     console.log(flight.departs.toISOString().slice(0,16));
@@ -77,11 +81,27 @@ function edit(req, res){
   })
 }
 
+function update(req, res){
+  console.log(req.body, 'in update');
+  for(let key in req.body){
+    if(req.body[key] === '') delete req.body[key];
+  }
+  Flight.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(flight =>{
+    res.redirect(`/flights/${flight._id}`);
+  })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
+}
+
 export{
   index,
   newFlight as new,
   create,
   delFlight as delete,
   show,
-  edit
+  edit,
+  update
 }

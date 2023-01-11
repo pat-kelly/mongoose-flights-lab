@@ -22,6 +22,9 @@ router.get('/:id', flightsCtrl.show);
 // GET /flights/:id/edit
 router.get('/:id/edit', flightsCtrl.edit);
 
+// PUT /flights/:id
+router.put('/:id', flightsCtrl.update);
+
 export {
   router
 }
