@@ -37,6 +37,12 @@ section div:nth-child(even) {
   font-weight: bold;
 }
 
+.edit-button{
+  margin-top: 15px;
+  padding: 5px 20px;
+  font-size: large;
+}
+
 #add-review-form {
   display: grid;
   grid-template-columns: auto auto;

@@ -5,17 +5,18 @@
 <main>
   <h1><%= title %></h1>
   <section>
-    <div>Flight Number: </div>
-    <div><%= flight.flightNo %></div>
     <div>Airline: </div>
     <div><%= flight.airline %></div>
     <div>Airport: </div>
     <div><%= flight.airport %></div>
+    <div>Flight Number: </div>
+    <div><%= flight.flightNo %></div>
     <div>Departing Day: </div>
     <div><%= flight.departs.toLocaleDateString() %></div>
     <div>Departing Time: </div>
     <div><%= flight.departs.toLocaleTimeString() %></div>
   </section>
+  <a href="/flights/<%= flight._id %>/edit"><button class="edit-button">EDIT</button>
 </main>
 
 <%- include('../partials/footer') %>

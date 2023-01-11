@@ -63,7 +63,18 @@ function show(req, res){
     console.error(err);
     res.redirect('/flights');
   })
+}
 
+function edit(req, res){
+  console.log(req.params.id, 'in edit');
+  Flight.findById(req.params.id)
+  .then(flight =>{
+    console.log(flight.departs.toISOString().slice(0,16));
+    res.render('flights/edit', {
+      title: `Edit flight ${flight.flightNo}`,
+      flight
+    })
+  })
 }
 
 export{
@@ -71,5 +82,6 @@ export{
   newFlight as new,
   create,
   delFlight as delete,
-  show
+  show,
+  edit
 }

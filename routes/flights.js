@@ -19,6 +19,9 @@ router.delete('/:id', flightsCtrl.delete);
 // GET /flights/:id
 router.get('/:id', flightsCtrl.show);
 
+// GET /flights/:id/edit
+router.get('/:id/edit', flightsCtrl.edit);
+
 export {
   router
 }
