@@ -17,12 +17,13 @@ function index(req, res){
 
 function newFlight(req, res){
   res.render('flights/new',{
-    title: 'Add Flight'
+    title: 'Add Flight',
+    flight: new Flight()
   })
 }
 
 function create(req, res){
-  // console.log(req.body);
+  console.log(req.body);
   //remove empties so defaults can take over
   for(let key in req.body){
     if(req.body[key] === '') delete req.body[key];

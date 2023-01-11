@@ -16,7 +16,9 @@
     </thead>
     <tbody>
       <% flights .forEach(flight => { %>
-        <tr>
+        <%# flight.departs.getTime() %> 
+        <%# Date.now() %> 
+        <tr <%= flight.departs.getTime() < Date.now() ? 'class=red' : '' %>>
           <td>
             <form 
               action="/flights/<%= flight._id %>?_method=DELETE"

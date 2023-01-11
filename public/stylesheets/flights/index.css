@@ -11,6 +11,10 @@ table thead th {
   border:0;
 }
 
+.red > *{
+  color:red;
+}
+
 #no-right-margin{
   margin-right:0;
 }

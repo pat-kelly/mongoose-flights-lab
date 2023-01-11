@@ -21,6 +21,7 @@ const movieSchema = new Schema({
     default: function(){
       let curDate = new Date();
       curDate.setFullYear(curDate.getFullYear()+1);
+      curDate.setHours(curDate.getHours()-5);
       return curDate;
     }
   }
