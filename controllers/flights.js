@@ -39,7 +39,7 @@ function create(req, res){
 }
 
 function delFlight(req, res){
-  console.log(req.params.id, 'in delete');
+  // console.log(req.params.id, 'in delete');
   Flight.findByIdAndDelete(req.params.id)
   .then(flight =>{
     res.redirect('/flights');
@@ -50,9 +50,26 @@ function delFlight(req, res){
   })
 }
 
+function show(req, res){
+  console.log(req.params.id, 'in show');
+  Flight.findById(req.params.id)
+  .then(flight =>{
+    res.render('flights/show', {
+      title: `Flight ${flight.flightNo} with ${flight.airline}`,
+      flight
+    })
+  })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
+
+}
+
 export{
   index,
   newFlight as new,
   create,
-  delFlight as delete
+  delFlight as delete,
+  show
 }
