@@ -40,6 +40,14 @@ function create(req, res){
 
 function delFlight(req, res){
   console.log(req.params.id, 'in delete');
+  Flight.findByIdAndDelete(req.params.id)
+  .then(flight =>{
+    res.redirect('/flights');
+  })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
 }
 
 export{
