@@ -79,3 +79,13 @@ nav > a.active {
 .fas::before {
   font-family: "Font Awesome 5 Free";
 }
+
+.delete-button{
+  border-radius: 60%;
+  color:red;
+  font-size: 20px;
+}
+
+.no-bottom{
+  border:0;
+}

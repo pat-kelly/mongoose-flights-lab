@@ -25,6 +25,9 @@ router.get('/:id/edit', flightsCtrl.edit);
 // PUT /flights/:id
 router.put('/:id', flightsCtrl.update);
 
+// POST /flights/:id/tickets
+router.post('/:id/tickets', flightsCtrl.createTicket);
+
 export {
   router
 }
