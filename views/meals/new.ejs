@@ -4,13 +4,24 @@
 
 <main>
   <h1><%= title %></h1>
-  <p>Please ensure the meal you are about to add doesn't already exist below
+  <p>Please ensure the meal you are about to add doesn't already exist below</p>
+
+  <table>
+    <% meals.forEach(meal => { %>
+      <tr>
+        <td>
+          <form action="/meals/new/<%= meal._id %>?_method=DELETE" method="POST">
+            <button class="del">x</button>
+            <%= meal.name %>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+
     <ul>
-      <% meals.forEach(meal => { %>
-        <li><%= meal.name %> </li>
-      <% }) %>
     </ul>
-  </p>
+  
 
   <form id='new-form' action="/meals" method="POST">
     <label for="name-input">Name:</label>
@@ -26,6 +37,11 @@
     <% } %>
     <button type="submit">Add new meal</button>
   </form>
+  <% if (req.query.removedFrom) { %>
+    <p>Removed <%= req.query.meal %> from flights: 
+      <%= req.query.removedFrom %>
+    </p>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>

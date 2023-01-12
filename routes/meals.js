@@ -7,7 +7,10 @@ const router = Router();
 router.get('/new', mealsCtrl.new);
 
 // POST /meals
-router.post('/', mealsCtrl.create)
+router.post('/', mealsCtrl.create);
+
+// DELETE /meals/new/:id
+router.delete('/new/:id', mealsCtrl.delete);
 
 export {
   router
