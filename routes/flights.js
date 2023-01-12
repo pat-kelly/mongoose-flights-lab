@@ -28,6 +28,9 @@ router.put('/:id', flightsCtrl.update);
 // POST /flights/:id/tickets
 router.post('/:id/tickets', flightsCtrl.createTicket);
 
+// DELETE /flights/:id/tickets/:id
+router.delete('/:fId/tickets/:tId', flightsCtrl.delTicket);
+
 export {
   router
 }

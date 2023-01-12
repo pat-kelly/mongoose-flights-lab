@@ -43,6 +43,12 @@ section div:nth-child(even) {
   font-size: large;
 }
 
+.delete-button{
+  border-radius: 60%;
+  color:red;
+  font-size: 15px;
+}
+
 #add-ticket-form {
   display: grid;
   grid-template-columns: auto auto;

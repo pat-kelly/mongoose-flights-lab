@@ -33,7 +33,13 @@
       <tbody>
         <% flight.tickets.forEach(ticket => { %>
           <tr>
-            <td><button class='delete-button'>X</button></td>
+            <td>
+              <form id="ticket-display" 
+              action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE"
+              method="POST">
+                <button type="submit" class='delete-button'>X</button>
+              </form>
+            </td>
             <td><%= ticket.seat %></td>
             <td>$<%= ticket.price %></td>
           </tr>
