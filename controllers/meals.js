@@ -6,20 +6,26 @@ function newMeal(req, res){
   .then(meals =>{
     res.render('meals/new', {
       title: "Add new Meal",
-      meals
+      meals,
+      req
     })
   })
 }
 
 function create(req, res){
-  console.log(req.body);
-  Meal.create(req.body)
+  Meal.findOne({name:req.body.name})
   .then(meal =>{
-    res.redirect('/meals/new');
+    res.redirect(`/meals/new?err=${meal.name}`);
   })
-  .catch(err =>{
-    console.error(err);
-    res.redirect('/');
+  .catch(m =>{ 
+    Meal.create(req.body)
+    .then(meal =>{
+      res.redirect('/meals/new');
+    })
+    .catch(err =>{
+      console.error(err);
+      res.redirect('/');
+    })
   })
 }
 

@@ -14,7 +14,16 @@
 
   <form id='new-form' action="/meals" method="POST">
     <label for="name-input">Name:</label>
-    <input type="text" name="name" id="name-input" required>
+    <input 
+    type="text" 
+    name="name" 
+    id="name-input" 
+    value = "<%= req.query ? req.query.err : '' %>"
+    class = "<%= req.query.err ? 'red' : '' %> "
+    required>
+    <% if (req.query.err) { %>
+      <span class="err">Meal already exists</span>
+    <% } %>
     <button type="submit">Add new meal</button>
   </form>
 </main>
