@@ -34,6 +34,9 @@ router.delete('/:fId/tickets/:tId', flightsCtrl.delTicket);
 // PUT /flights/:id/meals
 router.post('/:id/meals', flightsCtrl.addMeal);
 
+// DELETE /flights/:id/meals/:id
+router.delete('/:fId/meals/:mId', flightsCtrl.delMeal);
+
 export {
   router
 }

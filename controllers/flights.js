@@ -126,8 +126,8 @@ function createTicket(req, res){
 }
 
 function delTicket(req, res){
-  console.log(req.params.tId, 'ticket id');
-  console.log(req.params.fId, 'flight id');
+  // console.log(req.params.tId, 'ticket id');
+  // console.log(req.params.fId, 'flight id');
   Flight.findById(req.params.fId)
   .then(flight =>{
     flight.tickets.pull(req.params.tId);
@@ -166,6 +166,27 @@ function addMeal(req, res){
   })
 }
 
+function delMeal(req, res){
+  console.log('fId', req.params.fId);
+  console.log('mId', req.params.mId);
+  Flight.findById(req.params.fId)
+  .then(flight =>{
+    flight.meals.pull(req.params.mId);
+    flight.save()
+    .then(flight =>{
+      res.redirect(`/flights/${flight._id}`);
+    })
+    .catch(err =>{
+      console.error(err);
+      res.redirect('/flights');
+    })
+  })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
+}
+
 export{
   index,
   newFlight as new,
@@ -176,5 +197,6 @@ export{
   update,
   createTicket,
   delTicket,
-  addMeal
+  addMeal,
+  delMeal
 }
