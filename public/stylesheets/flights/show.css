@@ -6,6 +6,7 @@ ul {
 
 li {
   font-weight: bold;
+  list-style: none;
 }
 
 table {

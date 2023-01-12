@@ -20,6 +20,28 @@
     <a href="/flights/<%= flight._id %>/edit"><button class="edit-button">Edit Flight</button></a>
     <a href="/flights/"><button class="edit-button">Back to flights</button></a>
   </section>
+
+  <h3>In Flight Meals</h3>
+  <% if (flight.meals.length) { %>
+    <ul>
+      <% flight.meals.forEach(meal => { %>
+        <li><%= meal.name %></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <h5>No in flight meals. Make sure to enter some before they take off!</h5>
+  <% } %>
+
+  <form action="/flights/<%= flight._id %>/meals" method="POST">
+    <label for="meal-name">Pick a Meal:</label>
+    <select id="meal-name" name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add meal to Flight <%= flight.flightNo %> </button>
+  </form>
+
   <h2>Tickets</h2>
   <% if (flight.tickets.length) { %>
     <table>
@@ -55,7 +77,7 @@
     method="POST"
   >
     <label for="seat-input">Seat: </label>
-    <input required placeholder="A1 - F9" name="seat" id="seat-input">
+    <input required placeholder="A1 - F99" name="seat" id="seat-input">
     <label for="price-input">Price: </label>
     <input required name="price" id="price-input">
     <button type="submit">Add ticket</button>

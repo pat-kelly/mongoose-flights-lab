@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Flight } from '../models/flight.js';
+import { Meal } from "../models/meal.js";
 
 function index(req, res){
   Flight.find({})
@@ -53,17 +54,22 @@ function delFlight(req, res){
 }
 
 function show(req, res){
-  console.log(req.params.id, 'in show');
+  // console.log(req.params.id, 'in show');
   Flight.findById(req.params.id)
+  .populate('meals')
   .then(flight =>{
-    res.render('flights/show', {
-      title: `Flight ${flight.flightNo} with ${flight.airline}`,
-      flight
+    Meal.find({_id: {$nin: flight.meals}})
+    .then(meals =>{
+      res.render('flights/show', {
+        title: `Flight ${flight.flightNo} with ${flight.airline}`,
+        flight,
+        meals
+      })
     })
-  })
-  .catch(err =>{
-    console.error(err);
-    res.redirect('/flights');
+    .catch(err =>{
+      console.error(err);
+      res.redirect('/flights');
+    })
   })
   .catch(err =>{
     console.error(err);
@@ -140,6 +146,26 @@ function delTicket(req, res){
   })
 }
 
+function addMeal(req, res){
+  console.log(req.body, req.params.id, 'in addMeal');
+  Flight.findById(req.params.id)
+  .then(flight =>{
+    flight.meals.push(req.body.mealId);
+    flight.save()
+    .then(flight =>{
+      res.redirect(`/flights/${flight._id}`);
+    })
+    .catch(err =>{
+      console.error(err);
+      res.redirect('/flights');
+    })
+  })
+  .catch(err =>{
+    console.error(err);
+    res.redirect('/flights');
+  })
+}
+
 export{
   index,
   newFlight as new,
@@ -149,5 +175,6 @@ export{
   edit,
   update,
   createTicket,
-  delTicket
+  delTicket,
+  addMeal
 }

@@ -5,9 +5,11 @@
 <main>
   <h1><%= title %></h1>
   <p>Please ensure the meal you are about to add doesn't already exist below
-
-    <!-- put the list here after you make some -->
-
+    <ul>
+      <% meals.forEach(meal => { %>
+        <li><%= meal.name %> </li>
+      <% }) %>
+    </ul>
   </p>
 
   <form id='new-form' action="/meals" method="POST">
